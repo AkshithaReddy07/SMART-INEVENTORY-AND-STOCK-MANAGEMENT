@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Management | StockSmart</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .add-btn {
+            background: #6566e9;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .add-btn:hover {
+            background: #5051c9;
+        }
+
+        .product-form {
+            display: none;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .product-form h3 {
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #6566e9;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .save-btn {
+            background: #6566e9;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .cancel-btn {
+            background: #eee;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .filter-section input {
+            flex: 1;
+        }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            padding: 16px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        th {
+            color: #777d91;
+            background: #f8f9fc;
+        }
+
+        .status {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .available {
+            background: #e2f8ed;
+            color: #22a06b;
+        }
+
+        .low {
+            background: #fff1dc;
+            color: #e69500;
+        }
+
+        .out {
+            background: #ffe5e5;
+            color: #e74c3c;
+        }
+
+        .action-btn {
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .edit-btn {
+            background: #e7edff;
+            color: #536dfe;
+        }
+
+        .delete-btn {
+            background: #ffe5e5;
+            color: #e74c3c;
+        }
+
+        @media(max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                flex-direction: column;
+            }
+
+            .product-header {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <h2>Stock<span>Smart</span></h2>
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="products.html">
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-warehouse"></i>
+                    Stock Management
+                </a>
+            </li>
+
+            <li>
+                <a href="low-stock.html">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Low Stock Alerts
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Reports
+                </a>
+            </li>
+            <li>
+    <a href="suppliers.html">
+        <i class="fas fa-truck"></i>
+        <span>Suppliers</span>
+    </a>
+</li>
+
+        </ul>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html">
+    <i class="fa-solid fa-gear"></i>
+    Settings
+</a>
+
+            <a href="login.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="top-navbar">
+
+            <div>
+                <h2>Product Management</h2>
+                <p>Manage and organize your inventory products.</p>
+            </div>
+
+            <div class="profile">
+                <i class="fa-regular fa-bell"></i>
+
+                <div class="profile-info">
+                    <h4>Admin</h4>
+                    <p>Administrator</p>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Product Header -->
+        <section class="product-header">
+
+            <div>
+                <h2>All Products</h2>
+                <p>View, add, edit and manage your products.</p>
+            </div>
+
+            <button class="add-btn" onclick="showForm()">
+                <i class="fa-solid fa-plus"></i>
+                Add Product
+            </button>
+
+        </section>
+
+
+        <!-- Add Product Form -->
+        <section class="product-form" id="productForm">
+
+            <h3 id="formTitle">Add New Product</h3>
+
+            <form id="addProductForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" id="productName"
+                        placeholder="Enter product name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Stationery">Stationery</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price (₹)</label>
+                        <input type="number" id="price"
+                        placeholder="Enter price" min="0.01" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="quantity"
+                        placeholder="Enter quantity" min="0" step="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Supplier</label>
+                        <input type="text" id="supplier"
+                        placeholder="Enter supplier name" required>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button type="submit" class="save-btn">
+                        Save Product
+                    </button>
+
+                    <button type="button" class="cancel-btn"
+                    onclick="hideForm()">
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="filter-section">
+
+            <input type="text" id="searchInput"
+            placeholder="Search products by name or supplier...">
+
+            <select id="categoryFilter">
+
+                <option value="">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Stationery">Stationery</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Product Table -->
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Supplier</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTableBody">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/storage.js"></script>
+<script src="../js/products.js"></script>
+</body>
+</html>

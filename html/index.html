@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Inventory Management</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <h2>Stock<span>Smart</span></h2>
+            </div>
+
+            <ul class="sidebar-menu">
+
+                <li class="active">
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                   <a href="products.html">
+    <i class="fa-solid fa-box"></i>
+    Products
+</a>
+                </li>
+
+                <li>
+                    <a href="stock.html">
+    <i class="fa-solid fa-warehouse"></i>
+    Stock Management
+</a>
+                </li>
+
+                <li>
+                   <a href="low-stock.html">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Low Stock Alerts
+                </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        Reports
+                    </a>
+                </li>
+                <li>
+    <a href="suppliers.html">
+        <i class="fas fa-truck"></i>
+        <span>Suppliers</span>
+    </a>
+</li>
+
+            </ul>
+
+            <div class="sidebar-bottom">
+
+                <a href="settings.html">
+    <i class="fa-solid fa-gear"></i>
+    Settings
+</a>
+
+                <a href="login.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome back! Here's your inventory overview.</p>
+                </div>
+
+                <div class="profile">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <div class="profile-info">
+                        <h4>Admin</h4>
+                        <p>Administrator</p>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <section class="dashboard-content">
+
+                <h2>Overview</h2>
+
+                <div class="stats-container">
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+
+                        <h3>Total Products</h3>
+                        <h1 id="totalProducts">0</h1>
+                        <p>Products in inventory</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-cubes"></i>
+                        </div>
+
+                        <h3>Total Stock</h3>
+                        <h1 id="totalStock">0</h1>
+                        <p>Available units</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <h3>Low Stock</h3>
+                        <h1 id="lowStock">0</h1>
+                        <p>Need restocking</p>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon red">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+
+                        <h3>Out of Stock</h3>
+                        <h1 id="outOfStock">0</h1>
+                        <p>Unavailable products</p>
+                    </div>
+
+                </div>
+
+
+                <!-- Charts Section -->
+                <div class="charts-container">
+
+                    <div class="chart-card">
+                        <h3>Inventory Overview</h3>
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Stock Distribution</h3>
+                        <canvas id="stockChart"></canvas>
+                    </div>
+
+                </div>
+
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+
+                    <h3>Recent Stock Activities</h3>
+
+                    <p>No recent activities available.</p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>
+

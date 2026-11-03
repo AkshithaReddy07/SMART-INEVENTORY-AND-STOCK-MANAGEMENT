@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | StockSmart</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        .settings-heading {
+            margin-bottom: 25px;
+        }
+
+        .settings-heading p {
+            color: #9297a9;
+            margin-top: 8px;
+        }
+
+        .settings-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .settings-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+        }
+
+        .settings-card h3 {
+            margin-bottom: 22px;
+            color: #25283f;
+        }
+
+        .settings-card h3 i {
+            color: #6865ed;
+            margin-right: 10px;
+        }
+
+        .settings-group {
+            margin-bottom: 20px;
+        }
+
+        .settings-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .settings-group input,
+        .settings-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .settings-group input:focus,
+        .settings-group select:focus {
+            border-color: #6865ed;
+        }
+
+        .settings-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .save-btn {
+            background: #6865ed;
+            color: white;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .reset-btn {
+            background: #f1f1f5;
+            color: #555;
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .save-btn:hover {
+            background: #514ed0;
+        }
+
+        .reset-btn:hover {
+            background: #e2e2e8;
+        }
+
+        .settings-note {
+            color: #888;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        @media(max-width: 900px) {
+
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <h2>Stock<span>Smart</span></h2>
+
+        </div>
+
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="stock.html">
+                    <i class="fa-solid fa-warehouse"></i>
+                    Stock Management
+                </a>
+            </li>
+
+            <li>
+                <a href="lowstock.html">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Low Stock Alerts
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Reports
+                </a>
+            </li>
+            <li>
+    <a href="suppliers.html">
+        <i class="fas fa-truck"></i>
+        <span>Suppliers</span>
+    </a>
+</li>
+
+        </ul>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html" class="active">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <header class="top-navbar">
+
+            <div>
+
+                <h2>Settings</h2>
+
+                <p>Manage your account and inventory preferences.</p>
+
+            </div>
+
+            <div class="profile">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <div class="profile-info">
+
+                    <h4>Admin</h4>
+
+                    <p>Administrator</p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="settings-heading">
+
+            <h2>System Configuration</h2>
+
+            <p>Customize your StockSmart application.</p>
+
+        </section>
+
+
+        <form id="settingsForm">
+
+            <div class="settings-container">
+
+
+                <!-- Profile Settings -->
+
+                <section class="settings-card">
+
+                    <h3>
+                        <i class="fa-solid fa-user"></i>
+                        Admin Profile
+                    </h3>
+
+                    <div class="settings-group">
+
+                        <label>Admin Name</label>
+
+                        <input
+                            type="text"
+                            id="adminName"
+                            placeholder="Enter admin name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="settings-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            placeholder="Enter email address"
+                            required
+                        >
+
+                    </div>
+
+                </section>
+
+
+                <!-- Inventory Settings -->
+
+                <section class="settings-card">
+
+                    <h3>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        Inventory Configuration
+                    </h3>
+
+
+                    <div class="settings-group">
+
+                        <label>Low Stock Threshold</label>
+
+                        <input
+                            type="number"
+                            id="lowStockThreshold"
+                            min="0"
+                            step="1"
+                            required
+                        >
+
+                        <p class="settings-note">
+                            Products at or below this quantity will trigger alerts.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-group">
+
+                        <label>Recommended Stock Level</label>
+
+                        <input
+                            type="number"
+                            id="recommendedStock"
+                            min="1"
+                            step="1"
+                            required
+                        >
+
+                    </div>
+
+                </section>
+
+
+                <!-- Regional Settings -->
+
+                <section class="settings-card">
+
+                    <h3>
+                        <i class="fa-solid fa-globe"></i>
+                        Regional Preferences
+                    </h3>
+
+
+                    <div class="settings-group">
+
+                        <label>Currency</label>
+
+                        <select id="currency">
+
+                            <option value="INR">Indian Rupee (₹)</option>
+
+                            <option value="USD">US Dollar ($)</option>
+
+                            <option value="EUR">Euro (€)</option>
+
+                            <option value="GBP">British Pound (£)</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="settings-group">
+
+                        <label>Date Format</label>
+
+                        <select id="dateFormat">
+
+                            <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+
+                            <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+
+                            <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+
+                        </select>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Application Settings -->
+
+                <section class="settings-card">
+
+                    <h3>
+                        <i class="fa-solid fa-sliders"></i>
+                        Application Preferences
+                    </h3>
+
+
+                    <div class="settings-group">
+
+                        <label>Default Product Status</label>
+
+                        <select id="defaultStatus">
+
+                            <option value="Available">Available</option>
+
+                            <option value="Active">Active</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="settings-group">
+
+                        <label>Application Name</label>
+
+                        <input
+                            type="text"
+                            id="appName"
+                            value="StockSmart"
+                            required
+                        >
+
+                    </div>
+
+                </section>
+
+
+                <!-- Buttons -->
+
+                <section class="settings-card full-width">
+
+                    <h3>
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Configuration
+                    </h3>
+
+                    <p>
+                        Save your preferences to customize your inventory
+                        management application.
+                    </p>
+
+
+                    <div class="settings-actions">
+
+                        <button type="submit" class="save-btn">
+
+                            <i class="fa-solid fa-check"></i>
+                            Save Settings
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="reset-btn"
+                            id="resetSettings">
+
+                            <i class="fa-solid fa-rotate-left"></i>
+                            Reset Settings
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </form>
+
+    </main>
+
+</div>
+
+
+<script src="../js/storage.js"></script>
+<script src="../js/settings.js"></script>
+
+</body>
+
+</html>
